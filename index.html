@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Hls.js demo - basic usage</title>
+    <title>NDN Video Streaming</title>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
 
@@ -8,11 +8,9 @@
     <script src="http://localhost:3000/hls"></script>
 
     <center>
-      <h1>Hls.js demo - basic usage</h1>
+      <h1>NDN Video Streaming</h1>
       <video height="600" id="video" controls></video>
     </center>
-
-    <p>Buffer: </p><p id="buffer"></p>
 
     <script>
       var video = document.getElementById('video');
@@ -25,8 +23,6 @@
         hls.on(Hls.Events.MEDIA_ATTACHED, function () {
           video.muted = true;
           video.play();
-          let x = 0;
-          document.getElementById("demo").innerHTML = x
         });
       }
       // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
@@ -36,16 +32,8 @@
         video.src = 'http://localhost:3000/segments-list';
         video.addEventListener('canplay', function () {
           video.play();
-          let x = 0;
-          document.getElementById("demo").innerHTML = x
         });
       }
-
-      var vid = document.getElementById("video");
-      vid.onwaiting = function() {
-        x++;
-        document.getElementById("demo").innerHTML = x
-      };
     </script>
   </body>
 </html>
