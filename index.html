@@ -19,7 +19,7 @@
         var hls = new Hls({
           debug: true,
         });
-        hls.loadSource('http://localhost:3000/segments-list');
+        hls.loadSource('http://10.0.0.2:3000/segments-list');
         hls.attachMedia(video);
         hls.on(Hls.Events.MEDIA_ATTACHED, function () {
           video.muted = true;
