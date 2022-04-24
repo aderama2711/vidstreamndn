@@ -3,6 +3,11 @@ const path = require('path')
 const { execSync } = require("child_process")
 var app =  express()
 
+var cors = require('cors');
+
+// use it before all route definitions
+app.use(cors({origin: 'http://10.0.0.2:3000'}));
+
 app.get('/', function (req, res){
     const resolvedPath = path.resolve('index.html');
     res.sendFile(resolvedPath);
