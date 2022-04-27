@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const { execSync } = require("child_process")
 var app =  express()
 
 app.get('/', function (req, res){
