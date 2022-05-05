@@ -13,17 +13,21 @@
       <video height="600" id="video" controls></video>
     </center>
 
+    <p>Buffer: </p><p id="buffer"></p>
+
     <script>
       var video = document.getElementById('video');
       if (Hls.isSupported()) {
         var hls = new Hls({
           debug: true,
         });
-        hls.loadSource('http://10.0.0.2:3000/segments-list');
+        hls.loadSource('http://localhost:3000/segments-list');
         hls.attachMedia(video);
         hls.on(Hls.Events.MEDIA_ATTACHED, function () {
           video.muted = true;
           video.play();
+          let x = 0;
+          document.getElementById("demo").innerHTML = x
         });
       }
       // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
@@ -33,8 +37,16 @@
         video.src = 'http://localhost:3000/segments-list';
         video.addEventListener('canplay', function () {
           video.play();
+          let x = 0;
+          document.getElementById("demo").innerHTML = x
         });
       }
+
+      var vid = document.getElementById("video");
+      vid.onwaiting = function() {
+        x++;
+        document.getElementById("demo").innerHTML = x
+      };
     </script>
   </body>
 </html>
