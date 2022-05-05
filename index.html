@@ -27,7 +27,7 @@
           video.muted = true;
           video.play();
           let x = 0;
-          document.getElementById("demo").innerHTML = x
+          document.getElementById("buffer").innerHTML = x
         });
       }
       // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
@@ -38,14 +38,14 @@
         video.addEventListener('canplay', function () {
           video.play();
           let x = 0;
-          document.getElementById("demo").innerHTML = x
+          document.getElementById("buffer").innerHTML = x
         });
       }
 
       var vid = document.getElementById("video");
       vid.onwaiting = function() {
         x++;
-        document.getElementById("demo").innerHTML = x
+        document.getElementById("buffer").innerHTML = x
       };
     </script>
   </body>
