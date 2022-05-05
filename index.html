@@ -14,8 +14,12 @@
     </center>
 
     <p>ReBuffer: </p><p id="buffer"></p>
+    <p>Delay ReBuffer-n:</p><p id="delaybuffer"></p>
 
     <script>
+      let start=0;
+      let end=0;
+      const ms = [];
       var video = document.getElementById('video');
       if (Hls.isSupported()) {
         var hls = new Hls({
@@ -27,7 +31,7 @@
           video.muted = true;
           video.play();
           let x = 0;
-          document.getElementById("buffer").innerHTML = x
+          document.getElementById("buffer").innerHTML = x;
         });
       }
       // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
@@ -38,14 +42,22 @@
         video.addEventListener('canplay', function () {
           video.play();
           let x = 0;
-          document.getElementById("buffer").innerHTML = x
+          document.getElementById("buffer").innerHTML = x;
         });
       }
 
-      var vid = document.getElementById("video");
-      vid.onwaiting = function() {
+      video.onwaiting = function() {
         x++;
-        document.getElementById("buffer").innerHTML = x
+        document.getElementById("buffer").innerHTML = x;
+        const startdate = new Date();
+        start = startdate.getTime();
+      };
+
+      video.onplaying = function() {
+        const stopdate = new Date();
+        end = stopdate.getTime();
+        ms.push(end-start)
+        document.getElementById("delaybuffer").innerHTML = ms;
       };
     </script>
   </body>
