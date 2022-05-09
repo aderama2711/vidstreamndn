@@ -53,15 +53,15 @@
         document.getElementById("buffer").innerHTML = x;
         const startdate = new Date();
         start = startdate.getTime();
+        sn.push(cursn)
+        document.getElementById("segnum").innerHTML = sn;
       };
 
       video.onplaying = function() {
         const stopdate = new Date();
         end = stopdate.getTime();
         ms.push(end-start)
-        sn.push(cursn)
         document.getElementById("delaybuffer").innerHTML = ms;
-        document.getElementById("segnum").innerHTML = sn;
       };
 
       hls.on(Hls.Events.FRAG_CHANGED, function (event, data){
