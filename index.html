@@ -15,12 +15,15 @@
 
     <p>ReBuffer: </p><p id="buffer"></p>
     <p>Delay ReBuffer-n:</p><p id="delaybuffer"></p>
+    <p>Segment Number:</p><p id="segnum"></p>
 
     <script>
       let start=0;
       let end=0;
       let x = 0;
+      let cursn = 0;
       const ms = [];
+      const sn = [];
       var video = document.getElementById('video');
       if (Hls.isSupported()) {
         var hls = new Hls({
@@ -56,8 +59,15 @@
         const stopdate = new Date();
         end = stopdate.getTime();
         ms.push(end-start)
+        sn.push(cursn)
         document.getElementById("delaybuffer").innerHTML = ms;
+        document.getElementById("segnum").innerHTML = sn;
       };
+
+      hls.on(Hls.Events.FRAG_CHANGED, function (event, data){
+        console.log('current segment/sequence number '+data.frag.sn);
+        cursn = data.frag.sn;
+      });
     </script>
   </body>
 </html>
