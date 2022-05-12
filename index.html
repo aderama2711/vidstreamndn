@@ -48,7 +48,7 @@
         });
       }
 
-      video.onwaiting = function() {
+      video.onstalled = function() {
         x++;
         document.getElementById("buffer").innerHTML = x;
         const startdate = new Date();
