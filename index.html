@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HTTP Video Streaming</title>
+    <title>NDN Video Streaming</title>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
 
@@ -64,8 +64,11 @@
         document.getElementById("delaybuffer").innerHTML = ms;
       };
 
+      video.onended = function() {
+        console.log(x+'\n'+ms+'\n'+sn);
+      };
+
       hls.on(Hls.Events.FRAG_CHANGED, function (event, data){
-        console.log('current segment/sequence number '+data.frag.sn);
         cursn = data.frag.sn;
       });
     </script>
