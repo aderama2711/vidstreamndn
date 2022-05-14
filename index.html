@@ -65,7 +65,10 @@
       };
 
       video.onended = function() {
-        console.log(x+'\n'+ms+'\n'+sn);
+        console.log(x+'\n');
+        for (let i = 0; i < sn.length; i++) {
+          text += ms[i] + " " + sn[i] + "\n";
+        }
       };
 
       hls.on(Hls.Events.FRAG_CHANGED, function (event, data){
