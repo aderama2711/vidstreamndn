@@ -1,3 +1,4 @@
+sudo mkdir /var/lib/nlsr
 
 nfdc face create udp://10.0.0.1
 nfdc face create udp://10.0.0.6
