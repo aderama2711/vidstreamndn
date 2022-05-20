@@ -1,3 +1,4 @@
+cd ..
 cd ndn-cxx
 git pull
 ./waf configure
