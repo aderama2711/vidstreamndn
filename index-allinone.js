@@ -55,7 +55,7 @@ app.get('/:m3u8', function (req,res){
 
     console.log(`send ${m3u8.toString()}`);
 
-    const resolvedPath = path.resolve(`temp/stream_2/${m3u8.toString()}`);
+    const resolvedPath = path.resolve(`temp/${m3u8.toString()}`);
     res.sendFile(resolvedPath);
 });
 
