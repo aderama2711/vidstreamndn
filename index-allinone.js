@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+var cors = require('cors')
 var app =  express()
 
 app.use(cors())
@@ -9,6 +10,14 @@ app.get('/segments-list', function (req,res){
     console.log('send m3u8 file');
 
     const resolvedPath = path.resolve('temp/output.m3u8');
+    res.sendFile(resolvedPath);
+});
+
+app.get('/:m3u8', function (req,res){
+
+    console.log('send m3u8 file');
+
+    const resolvedPath = path.resolve(`temp/${m3u8.toString()}`);
     res.sendFile(resolvedPath);
 });
 
