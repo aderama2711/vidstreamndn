@@ -51,7 +51,7 @@ app.get('/hls', function (req, res){
 })
 
 app.get('/:m3u8', function (req,res){
-    const { segment } = req.params;
+    const { m3u8 } = req.params;
 
     console.log(`send ${segment.toString()}`);
 
