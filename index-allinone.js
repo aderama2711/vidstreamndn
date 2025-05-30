@@ -9,24 +9,34 @@ app.get('/segments-list', function (req,res){
 
     console.log('send m3u8 file');
 
-    const resolvedPath = path.resolve('temp/output.m3u8');
+    const resolvedPath = path.resolve('temp/master.m3u8');
     res.sendFile(resolvedPath);
 });
 
-app.get('/:m3u8', function (req,res){
-
-    console.log('send m3u8 file');
-
-    const resolvedPath = path.resolve(`temp/${m3u8.toString()}`);
-    res.sendFile(resolvedPath);
-});
-
-app.get('/segments/:segment', function (req,res){
+app.get('/stream_0/:segment', function (req,res){
     const { segment } = req.params;
 
     console.log(`send ${segment.toString()}`);
 
-    const resolvedPath = path.resolve(`temp/${segment.toString()}`);
+    const resolvedPath = path.resolve(`temp/stream_0/${segment.toString()}`);
+    res.sendFile(resolvedPath);
+});
+
+app.get('/stream_1/:segment', function (req,res){
+    const { segment } = req.params;
+
+    console.log(`send ${segment.toString()}`);
+
+    const resolvedPath = path.resolve(`temp/stream_1/${segment.toString()}`);
+    res.sendFile(resolvedPath);
+});
+
+app.get('/stream_2/:segment', function (req,res){
+    const { segment } = req.params;
+
+    console.log(`send ${segment.toString()}`);
+
+    const resolvedPath = path.resolve(`temp/stream_2/${segment.toString()}`);
     res.sendFile(resolvedPath);
 });
 
@@ -39,6 +49,15 @@ app.get('/hls', function (req, res){
     const resolvedPath = path.resolve('node_modules/hls.js/dist/hls.js');
     res.sendFile(resolvedPath);
 })
+
+app.get('/:m3u8', function (req,res){
+    const { segment } = req.params;
+
+    console.log(`send ${segment.toString()}`);
+
+    const resolvedPath = path.resolve(`temp/stream_2/${m3u8.toString()}`);
+    res.sendFile(resolvedPath);
+});
 
 console.log("Server listening");
 
