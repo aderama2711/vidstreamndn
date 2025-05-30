@@ -53,7 +53,7 @@ app.get('/hls', function (req, res){
 app.get('/:m3u8', function (req,res){
     const { m3u8 } = req.params;
 
-    console.log(`send ${segment.toString()}`);
+    console.log(`send ${m3u8.toString()}`);
 
     const resolvedPath = path.resolve(`temp/stream_2/${m3u8.toString()}`);
     res.sendFile(resolvedPath);
